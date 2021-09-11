@@ -1,35 +1,47 @@
 package TimothyJmartKD;
 
-
 /**
- * Write a description of class Jmart here.
+ * Warm-Up Program
  *
- * @author (your name)
- * @version (a version number or a date)
+ * Timothy Christian Panggabean
+ * 1906355705
  */
 public class Jmart
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Jmart
-     */
-    public Jmart()
+    public static void main(String[] args)
     {
-        // initialise instance variables
-        x = 0;
+        
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    public int getPromo()
     {
-        // put your code here
-        return x + y;
+       return 0;
     }
+    
+    public String getCustomer()
+    {
+        return "oop";
+    }
+    
+    public float getDiscountPercentage(int before, int after)
+    {
+        float persenDiskon;
+        
+        if (before>after)
+        {
+            persenDiskon = before - after;
+            persenDiskon = (persenDiskon * 100) / before;
+        }
+        else
+        {
+            persenDiskon = 0;
+        }
+        return persenDiskon;
+    }
+     
+    public float DiscountedPrice(int price, float discountPercentage)
+    {
+       return 0;
+    }
+    
 }
