@@ -1,7 +1,7 @@
 package TimothyJmartKD;
 
 /**
- * Warm-Up Program
+ * Class Jmart
  *
  * Timothy Christian Panggabean
  * 1906355705
@@ -10,9 +10,9 @@ public class Jmart
 {
     public static void main(String[] args)
     {
-        
-    }
 
+    }
+    /*
     public static int getPromo()
     {
        return 0;
@@ -50,7 +50,6 @@ public class Jmart
         {
             return (int)(price - (price * discountPercentage / 100));
         }
-    
     }
     
      public static int getOriginalPrice(int discountedPrice, float discountPercentage)
@@ -75,5 +74,6 @@ public class Jmart
      public static int getAdminFee(int price)
     {
        return (int)(price * getCommissionMultiplier());
-    }
+    }*/
+    
 }
