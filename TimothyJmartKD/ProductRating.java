@@ -12,7 +12,8 @@ public class ProductRating
     private long total;
     private long count;
     
-    public ProductRating(){
+    public ProductRating()
+    {
         total = 0;
         count = 0;
     }
