@@ -40,7 +40,7 @@ public class Store extends Recognizable implements FileParser
     
     public Store(Account account, String name, String address, String phoneNumber)
     {
-       super(accountId);
+       super(account.id);
        this.name = name;
        this.address = address;
        this.phoneNumber = phoneNumber;    
