@@ -7,7 +7,7 @@ package TimothyJmartKD;
  * Timothy Christian Panggabean
  * 1906355705
  */
-public class Coupon
+public class Coupon extends Recognizable implements FileParser
 {
     public final String name;
     public final int code;
@@ -15,14 +15,32 @@ public class Coupon
     public final Type type;
     public final double minimum;
     private boolean used; 
+    @Override
+    public boolean read(String readTest)
+    {
+        return false;
+    }
+    
+    @Override
+    public Object write()
+    {
+        return null;
+    }
+    
+    @Override
+    public Object newInstance(String newInstanceTest)
+    {
+        return null;
+    }
     
     public static enum Type
     {
         DISCOUNT, REBATE;
     }
-
-    public Coupon(String name, int code, Type type, double cut, double minimum)
+    
+    Coupon(String name, int code, Type type, double cut, double minimum, int id)
     {
+        super(id);
         this.name = name;
         this.code = code;
         this.type = type;
@@ -30,6 +48,16 @@ public class Coupon
         this.minimum = minimum;
         used = false;
     }
+
+    /*public Coupon(String name, int code, Type type, double cut, double minimum)
+    {
+        this.name = name;
+        this.code = code;
+        this.type = type;
+        this.cut = cut;
+        this.minimum = minimum;
+        used = false;
+    }*/
 
     public boolean isUsed()
     {

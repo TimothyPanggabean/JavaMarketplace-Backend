@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Recognizable
+comment0.text=\r\n\ Abstract\ class\ Recognizable\r\n\r\n\ Timothy\ Christian\ Panggabean\r\n\ 1906355705\r\n
+comment1.params=id
+comment1.target=Recognizable(int)
+comment2.params=object
+comment2.target=boolean\ equals(java.lang.Object)
+comment3.params=recognizable
+comment3.target=boolean\ equals(Recognizable)
+numComments=4

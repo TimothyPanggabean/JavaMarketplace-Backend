@@ -15,21 +15,18 @@ public class Jmart
     
     public static Product create()
     {
-        Product test = new Product("test", 68, false, new PriceTag(419), ProductCategory.MISCELLANEOUS);
-        return test;
+       return null;
     }
     
     public static Product createProduct()
     {
-        Product testProduct = new Product("test product", 70, true, new PriceTag(421), ProductCategory.MISCELLANEOUS);
-        return testProduct;
+        return null;
     }
     
     
     public static Coupon createCoupon()
     {
-        Coupon diskonNatal = new Coupon("75% discount", 25, Coupon.Type.DISCOUNT, 75, 100000);
-        return diskonNatal;
+        return null;
     }
     
     public static ShipmentDuration createShipmentDuration()

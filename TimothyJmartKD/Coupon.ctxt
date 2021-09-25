@@ -1,12 +1,19 @@
 #BlueJ class context
 comment0.target=Coupon
 comment0.text=\r\n\ Class\ Coupon\r\n\r\n\ Timothy\ Christian\ Panggabean\r\n\ 1906355705\r\n
-comment1.params=name\ code\ type\ cut\ minimum
-comment1.target=Coupon(java.lang.String,\ int,\ Coupon.Type,\ double,\ double)
+comment1.params=readTest
+comment1.target=boolean\ read(java.lang.String)
 comment2.params=
-comment2.target=boolean\ isUsed()
-comment3.params=priceTag
-comment3.target=boolean\ canApply(PriceTag)
-comment4.params=priceTag
-comment4.target=double\ apply(PriceTag)
-numComments=5
+comment2.target=java.lang.Object\ write()
+comment3.params=newInstanceTest
+comment3.target=java.lang.Object\ newInstance(java.lang.String)
+comment4.params=name\ code\ type\ cut\ minimum\ id
+comment4.target=Coupon(java.lang.String,\ int,\ Coupon.Type,\ double,\ double,\ int)
+comment5.params=
+comment5.target=boolean\ isUsed()
+comment5.text=public\ Coupon(String\ name,\ int\ code,\ Type\ type,\ double\ cut,\ double\ minimum)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ this.name\ \=\ name;\r\n\ \ \ \ \ \ \ \ this.code\ \=\ code;\r\n\ \ \ \ \ \ \ \ this.type\ \=\ type;\r\n\ \ \ \ \ \ \ \ this.cut\ \=\ cut;\r\n\ \ \ \ \ \ \ \ this.minimum\ \=\ minimum;\r\n\ \ \ \ \ \ \ \ used\ \=\ false;\r\n}
+comment6.params=priceTag
+comment6.target=boolean\ canApply(PriceTag)
+comment7.params=priceTag
+comment7.target=double\ apply(PriceTag)
+numComments=8
