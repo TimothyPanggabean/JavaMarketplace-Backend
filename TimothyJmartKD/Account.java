@@ -30,8 +30,8 @@ public class Account extends Recognizable implements FileParser
     public String toString()
     {
         return
-        "Name: "+ name +
-        "\nEmail: "+ email +
-        "\nPassword: "+ password;
+        "name: "+ name +
+        "\nemail: "+ email +
+        "\npassword: "+ password;
     }
 }

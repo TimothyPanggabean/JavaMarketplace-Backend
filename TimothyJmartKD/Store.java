@@ -38,8 +38,8 @@ public class Store extends Recognizable implements FileParser
     public String toString()
     {
         return
-        "Name: "+ name +
-        "\nAddress: "+ address +
-        "\nPhone Number: "+ phoneNumber;
+        "name: "+ name +
+        "\naddress: "+ address +
+        "\nphone Number: "+ phoneNumber;
     }
 }
