@@ -9,10 +9,15 @@ package TimothyJmartKD;
  */
 public interface FileParser
 {
-    boolean read(String readTest);
+    public boolean read(String readTest);
+    
     default Object write()
     {
         return null;
     }
-    Object newInstance(String newInstanceTest);
+    
+    public static Object newInstance(String content)
+    {
+        return null;   
+    }
 }

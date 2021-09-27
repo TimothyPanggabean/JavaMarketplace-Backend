@@ -18,25 +18,15 @@ public class Product extends Recognizable implements FileParser
     public ProductCategory category;
     public ProductRating rating;
     public int storeId;
+    public Shipment.MultiDuration multiDuration;
+    
     @Override
     public boolean read(String readTest)
     {
         return false;
     }
     
-    @Override
-    public Object write()
-    {
-        return null;
-    }
-    
-    @Override
-    public Object newInstance(String newInstanceTest)
-    {
-        return null;
-    }
-    
-    public Product(int id, int storeId, String name, int weight, boolean conditionUsed,PriceTag priceTag, ProductCategory category)
+    public Product(int id, int storeId, String name, int weight, boolean conditionUsed,PriceTag priceTag, ProductCategory category, Shipment.MultiDuration multiDuration)
     {
         super(id);
         this.storeId = storeId; 
@@ -45,6 +35,19 @@ public class Product extends Recognizable implements FileParser
         this.conditionUsed = conditionUsed;
         this.priceTag = priceTag;
         this.category = category;
+        this.multiDuration = multiDuration;
+    }
+    
+    public String toString()
+    {
+        return
+        "Name: "+ name +
+        "\nWeight: "+ weight +
+        "\nconditionUsed: "+ conditionUsed +
+        "\npriceTag: "+ priceTag +
+        "\ncategory: "+ category +
+        "\nrating: "+ rating +
+        "\nstoreId: "+ storeId;
     }
     /*public Product(String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category)
     {

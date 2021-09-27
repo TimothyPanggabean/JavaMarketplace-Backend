@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Payment
+comment0.text=\r\n\ Class\ Payment\r\n\r\n\ Timothy\ Christian\ Panggabean\r\n\ 1906355705\r\n
+comment1.params=
+comment1.target=double\ getTotalPay()
+comment2.params=id\ buyerId\ productId\ productCount\ shipment
+comment2.target=Payment(int,\ int,\ int,\ int,\ Shipment)
+comment3.params=
+comment3.target=boolean\ validate()
+comment4.params=
+comment4.target=Invoice\ perform()
+numComments=5

@@ -29,12 +29,6 @@ public class Jmart
         return null;
     }
     
-    public static ShipmentDuration createShipmentDuration()
-    {
-        ShipmentDuration express = new ShipmentDuration(ShipmentDuration.SAME_DAY, ShipmentDuration.KARGO);
-        return express;
-    }
-    
     /*
     public static int getPromo()
     {

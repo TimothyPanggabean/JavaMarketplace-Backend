@@ -9,26 +9,15 @@ package TimothyJmartKD;
  */
 public class Store extends Recognizable implements FileParser
 {
+    public String name;
+    public String address;
+    public String phoneNumber;
+    
     @Override
     public boolean read(String readTest)
     {
         return false;
     }
-    
-    @Override
-    public Object write()
-    {
-        return null;
-    }
-    
-    @Override
-    public Object newInstance(String newInstanceTest)
-    {
-        return null;
-    }
-    public String name;
-    public String address;
-    public String phoneNumber;
        
     public Store(int accountId, String name, String address, String phoneNumber)
     {
@@ -44,5 +33,13 @@ public class Store extends Recognizable implements FileParser
        this.name = name;
        this.address = address;
        this.phoneNumber = phoneNumber;    
+    }
+    
+    public String toString()
+    {
+        return
+        "Name: "+ name +
+        "\nAddress: "+ address +
+        "\nPhone Number: "+ phoneNumber;
     }
 }

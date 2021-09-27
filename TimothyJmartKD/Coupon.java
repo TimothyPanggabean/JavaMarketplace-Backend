@@ -27,12 +27,6 @@ public class Coupon extends Recognizable implements FileParser
         return null;
     }
     
-    @Override
-    public Object newInstance(String newInstanceTest)
-    {
-        return null;
-    }
-    
     public static enum Type
     {
         DISCOUNT, REBATE;
