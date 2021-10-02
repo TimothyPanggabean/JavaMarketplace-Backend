@@ -1,5 +1,5 @@
 package TimothyJmartKD;
-
+import java.util.Date;
 
 /**
  * Class Invoice
@@ -21,7 +21,7 @@ public abstract class Invoice extends Recognizable implements FileParser
         super(id);
         this.buyerId = buyerId;
         this.productId = productId;
-        this.date = "Hari ini";
+        Date date = new Date();
         this.rating = Rating.NONE;
         this.status = Status.WAITING_CONFIRMATION;
     }

@@ -1,5 +1,7 @@
 package TimothyJmartKD;
-
+import java.text.SimpleDateFormat; 
+import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Class Shipment
@@ -35,7 +37,8 @@ public class Shipment implements FileParser
         public static final Duration REGULER = new Duration((byte)(1 << 3));
         public static final Duration KARGO = new Duration((byte)(1 << 4));
         private byte bit;
-       
+        public static final SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("EEE MMMM dd yyyy");
+               
         private Duration(byte bit)
         {
             this.bit = bit;
@@ -53,6 +56,29 @@ public class Shipment implements FileParser
                 return true;
             else
                 return false;
+        }
+        
+        public String getEstimatedArrival(Date reference)
+        {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(reference);
+            if(this.bit == INSTANT.bit || this.bit == SAME_DAY.bit) return ESTIMATION_FORMAT.format(reference);
+            else if(this.bit == NEXT_DAY.bit)
+            {
+                cal.add(Calendar.DATE,1);
+                return ESTIMATION_FORMAT.format(cal.getTime());
+            }
+            else if(this.bit == REGULER.bit)
+            {
+                cal.add(Calendar.DATE,2);
+                return ESTIMATION_FORMAT.format(cal.getTime());
+            }
+            else if(this.bit == KARGO.bit)
+            {
+                cal.add(Calendar.DATE,5);
+                return ESTIMATION_FORMAT.format(cal.getTime());
+            }
+            else return ESTIMATION_FORMAT.format(reference);
         }
     }
     

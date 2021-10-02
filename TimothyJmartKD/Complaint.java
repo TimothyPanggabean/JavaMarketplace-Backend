@@ -1,5 +1,5 @@
 package TimothyJmartKD;
-
+import java.util.Date;
 
 /**
  * Class Complaint
@@ -17,7 +17,7 @@ public class Complaint extends Recognizable implements FileParser
     {
         super(id);
         this.desc = desc;
-        this.date = "Hari ini";
+        Date date = new Date();
     }
     
     @Override
