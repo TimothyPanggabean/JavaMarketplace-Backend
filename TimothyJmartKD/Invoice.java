@@ -1,5 +1,6 @@
 package TimothyJmartKD;
 import java.util.Date;
+import java.util.ArrayList;
 
 /**
  * Class Invoice
@@ -15,6 +16,7 @@ public abstract class Invoice extends Recognizable implements FileParser
     public int complaintId;
     public Rating rating;
     public Status status;
+    ArrayList<Record> history;
     
     protected Invoice(int id, int buyerId, int productId)
     {
@@ -42,5 +44,13 @@ public abstract class Invoice extends Recognizable implements FileParser
     public static enum Rating
     {   
         NONE, BAD, NEUTRAL, GOOD;
+    }
+    
+    public class Record
+    {
+        public Status status;
+        public Date date;
+        public String message;
+        
     }
 }

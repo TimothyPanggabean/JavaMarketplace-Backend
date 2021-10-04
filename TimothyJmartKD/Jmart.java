@@ -13,6 +13,7 @@ public class Jmart
         
     }
     
+    /*
     public static Product create()
     {
        return null;
@@ -23,13 +24,12 @@ public class Jmart
         return null;
     }
     
-    
     public static Coupon createCoupon()
     {
         return null;
     }
     
-    /*
+    
     public static int getPromo()
     {
        return 0;
