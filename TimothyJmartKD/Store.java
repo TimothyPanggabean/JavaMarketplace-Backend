@@ -8,34 +8,21 @@ import java.util.regex.Pattern;
  * Timothy Christian Panggabean
  * 1906355705
  */
-public class Store extends Recognizable implements FileParser
+public class Store extends Recognizable
 {
     public String name;
     public String address;
     public String phoneNumber;
     public static final String REGEX_PHONE =" ^[0-9]{9,12}\b";
     public static final String REGEX_NAME = "^[A-Z][a-z\\sa-z]{4,19}\b";
-    
-    @Override
-    public boolean read(String readTest)
-    {
-        return false;
-    }
+    public double balance;
        
-    public Store(int accountId, String name, String address, String phoneNumber)
+    public Store(String name, String address, String phoneNumber,double balance)
     {
-       super(accountId);
        this.name = name;
        this.address = address;
        this.phoneNumber = phoneNumber;
-    }
-    
-    public Store(Account account, String name, String address, String phoneNumber)
-    {
-       super(account.id);
-       this.name = name;
-       this.address = address;
-       this.phoneNumber = phoneNumber;    
+       this.balance = balance;
     }
     
     public String toString()
@@ -43,7 +30,8 @@ public class Store extends Recognizable implements FileParser
         return
         "name: "+ name +
         "\naddress: "+ address +
-        "\nphone Number: "+ phoneNumber;
+        "\nphone Number: "+ phoneNumber +
+        "\nbalance: "+ balance;
     }
     
     public boolean validate()

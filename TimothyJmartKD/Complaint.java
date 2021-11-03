@@ -8,27 +8,14 @@ import java.text.SimpleDateFormat;
  * Timothy Christian Panggabean
  * 1906355705
  */
-public class Complaint extends Recognizable implements FileParser
+public class Complaint extends Recognizable
 {
-    public int paymentId;
     public String desc;
-    public String date;
+    public Date date;
 
-    public Complaint(int id, String desc)
+    public Complaint(String desc)
     {
-        super(id);
         this.desc = desc;
-        Date date = new Date();
-    }
-    
-    @Override
-    public boolean read (String content){
-        return false;
-    }
-    
-    public Object newInstance (String content)
-    {
-        return null;
     }
     
     public String toString()

@@ -7,35 +7,27 @@ package TimothyJmartKD;
  * Timothy Christian Panggabean
  * 1906355705
  */
-public class Product extends Recognizable implements FileParser
+public class Product extends Recognizable
 {
-    private static int idCounter = -1;
-    public int id;
+	public int accountId;
+	public ProductCategory category;
+	public boolean conditionUsed;
+    public double discount;
     public String name;
+    public double price;
+    public byte shipmentPlans;
     public int weight;
-    public boolean conditionUsed;
-    public PriceTag priceTag;
-    public ProductCategory category;
-    public ProductRating rating;
-    public int storeId;
-    public Shipment.MultiDuration multiDuration;
-    
-    @Override
-    public boolean read(String readTest)
+   
+    public Product(int accountId, String name, int weight, boolean conditionUsed, double price, double discount, ProductCategory category, byte shipmentPlans)
     {
-        return false;
-    }
-    
-    public Product(int id, int storeId, String name, int weight, boolean conditionUsed,PriceTag priceTag, ProductCategory category, Shipment.MultiDuration multiDuration)
-    {
-        super(id);
-        this.storeId = storeId; 
+        this.accountId = accountId; 
         this.name = name;
         this.weight = weight;
         this.conditionUsed = conditionUsed;
-        this.priceTag = priceTag;
+        this.price = price;
+        this.discount = discount;
         this.category = category;
-        this.multiDuration = multiDuration;
+        this.shipmentPlans = shipmentPlans;
     }
     
     public String toString()
@@ -44,20 +36,10 @@ public class Product extends Recognizable implements FileParser
         "Name: "+ name +
         "\nWeight: "+ weight +
         "\nconditionUsed: "+ conditionUsed +
-        "\npriceTag: "+ priceTag +
+        "\nprice: "+ price +
+        "\ndiscount: "+ discount +
         "\ncategory: "+ category +
-        "\nrating: "+ rating +
-        "\nstoreId: "+ storeId;
+        "\nshipmentPlans"+ shipmentPlans;
     }
-    /*public Product(String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category)
-    {
-        idCounter++;
-        this.id = idCounter; 
-        this.name = name;
-        this.weight = weight;
-        this.conditionUsed = conditionUsed;
-        this.priceTag = priceTag;
-        this.category = category;
-        this.rating = new ProductRating();
-    }*/
+    
 }

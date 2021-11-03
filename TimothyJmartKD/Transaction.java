@@ -19,16 +19,14 @@ public abstract class Transaction extends Recognizable
         NONE, BAD, NEUTRAL, GOOD
     }
     
-    protected Transaction (int id, int buyerId, int storeId)
+    protected Transaction (int buyerId, int storeId)
     {
-        super(id);
         this.buyerId = buyerId;
         this.storeId = storeId;
     }
     
-    protected Transaction (int id, Account buyer, Store store)
+    protected Transaction (Account buyer, Store store)
     {
-        super(id);
         buyerId = buyer.id;
         storeId = store.id;
     }

@@ -7,7 +7,7 @@ package TimothyJmartKD;
  * Timothy Christian Panggabean
  * 1906355705
  */
-public class Coupon extends Recognizable implements FileParser
+public class Coupon extends Recognizable
 {
     public final String name;
     public final int code;
@@ -15,26 +15,14 @@ public class Coupon extends Recognizable implements FileParser
     public final Type type;
     public final double minimum;
     private boolean used; 
-    @Override
-    public boolean read(String readTest)
-    {
-        return false;
-    }
-    
-    @Override
-    public Object write()
-    {
-        return null;
-    }
     
     public static enum Type
     {
         DISCOUNT, REBATE;
     }
     
-    Coupon(String name, int code, Type type, double cut, double minimum, int id)
+    public Coupon(String name, int code, Type type, double cut, double minimum)
     {
-        super(id);
         this.name = name;
         this.code = code;
         this.type = type;
@@ -42,33 +30,23 @@ public class Coupon extends Recognizable implements FileParser
         this.minimum = minimum;
         used = false;
     }
-
-    /*public Coupon(String name, int code, Type type, double cut, double minimum)
-    {
-        this.name = name;
-        this.code = code;
-        this.type = type;
-        this.cut = cut;
-        this.minimum = minimum;
-        used = false;
-    }*/
 
     public boolean isUsed()
     {
         return used;
     }
     
-    public boolean canApply(PriceTag priceTag)
+    public boolean canApply(Treasury priceTag)
     {
-        if (priceTag.getAdjustedPrice() >= minimum && used == false ) return true;
+        if (priceTag.getAdjustedPrice(priceTag.price, priceTag.discount) >= minimum && used == false ) return true;
         else return false;
     }
 
-    public double apply(PriceTag priceTag)
+    public double apply(Treasury priceTag)
     {
         used = true;
-        if (type == Type.DISCOUNT) return priceTag.getAdjustedPrice() - (priceTag.getAdjustedPrice() * cut/100);
-        else if(type == Type.REBATE) return priceTag.getAdjustedPrice() - cut;
+        if (type == Type.DISCOUNT) return priceTag.getAdjustedPrice(priceTag.price, priceTag.discount) - (priceTag.getAdjustedPrice(priceTag.price, priceTag.discount) * cut/100);
+        else if(type == Type.REBATE) return priceTag.getAdjustedPrice(priceTag.price, priceTag.discount) - cut;
         else return 0;
     }
 }

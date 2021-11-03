@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Algorithm
 {
-	//test
+
 	private Algorithm()
 	{
 	}

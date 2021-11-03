@@ -1,5 +1,11 @@
 package TimothyJmartKD;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+import com.google.gson.*;
+
 /**
  * Class Jmart
  *
@@ -8,89 +14,29 @@ package TimothyJmartKD;
  */
 public class Jmart
 {
-    public static void main(String[] args)
-    {
-        System.out.print("Hello from Eclipse");
-    }
-    
-    /*
-    public static Product create()
-    {
-       return null;
-    }
-    
-    public static Product createProduct()
-    {
-        return null;
-    }
-    
-    public static Coupon createCoupon()
-    {
-        return null;
-    }
-    
-    
-    public static int getPromo()
-    {
-       return 0;
-    }
-    
-    public static String getCustomer()
-    {
-        return "oop";
-    }
-    
-    public static float getDiscountPercentage(int before, int after)
-    {
-        float DiscountPercentage;
-        
-        if (before>after)
-        {
-            DiscountPercentage = before - after;
-            DiscountPercentage = (DiscountPercentage * 100) / before;
-        }
-        else
-        {
-            DiscountPercentage = 0;
-        }
-        return DiscountPercentage;
-    }
-     
-    public static int getDiscountedPrice(int price, float discountPercentage)
-    {
-        int DiscountedPrice;
-      if(discountPercentage > 100.0f) 
-        {
-            return 100;
-        }
-        else 
-        {
-            return (int)(price - (price * discountPercentage / 100));
-        }
-    }
-    
-     public static int getOriginalPrice(int discountedPrice, float discountPercentage)
-    {
-       return (int)(discountedPrice / (discountPercentage / 100));
-    }
-    
-     public static float getCommissionMultiplier()
-    {
-       return 0.05f;
-    }
-    
-     public static int getAdjustedPrice(int price)
-    {
-       int sementara, AdjustedPrice;
-       
-       sementara = (int)(price * getCommissionMultiplier());
-       AdjustedPrice = price + sementara;
-       return AdjustedPrice;
-    }
-    
-     public static int getAdminFee(int price)
-    {
-       return (int)(price * getCommissionMultiplier());
-    }*/
-    
+	class Country
+	{
+		public String name;
+		public int population;
+		public List<String> listOfStates;
+	}
+
+	public static void main(String[] args)
+	{
+		String filepath = "/Users/Timothy/Desktop/Kuliah/Semester 5/OOP/Praktikum/OOP Programs/jmart/lib/city.json";
+		Gson gson = new Gson();
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader(filepath));
+			Country input = gson.fromJson(br, Country.class);
+			System.out.println("name: " + input.name);
+			System.out.println("population: " + input.population);
+			System.out.println("states:");
+			input.listOfStates.forEach(state -> System.out.println(state));
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
 }
