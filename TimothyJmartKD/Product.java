@@ -7,7 +7,7 @@ package TimothyJmartKD;
  * Timothy Christian Panggabean
  * 1906355705
  */
-public class Product extends Recognizable
+public class Product extends Serializable
 {
 	public int accountId;
 	public ProductCategory category;

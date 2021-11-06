@@ -7,13 +7,13 @@ package TimothyJmartKD;
  * Timothy Christian Panggabean
  * 1906355705
  */
-public class Coupon extends Recognizable
+public class Coupon extends Serializable
 {
-    public final String name;
     public final int code;
     public final double cut;
-    public final Type type;
     public final double minimum;
+    public final String name;
+    public final Type type;
     private boolean used; 
     
     public static enum Type
@@ -36,17 +36,17 @@ public class Coupon extends Recognizable
         return used;
     }
     
-    public boolean canApply(Treasury priceTag)
+    public boolean canApply(double price, double discount)
     {
-        if (priceTag.getAdjustedPrice(priceTag.price, priceTag.discount) >= minimum && used == false ) return true;
+        if (Treasury.getAdjustedPrice(price, discount) >= minimum && used == false ) return true;
         else return false;
     }
 
-    public double apply(Treasury priceTag)
+    public double apply(double price, double discount)
     {
         used = true;
-        if (type == Type.DISCOUNT) return priceTag.getAdjustedPrice(priceTag.price, priceTag.discount) - (priceTag.getAdjustedPrice(priceTag.price, priceTag.discount) * cut/100);
-        else if(type == Type.REBATE) return priceTag.getAdjustedPrice(priceTag.price, priceTag.discount) - cut;
+        if (type == Type.DISCOUNT) return Treasury.getAdjustedPrice(price, discount) - (Treasury.getAdjustedPrice(price, discount) * cut/100);
+        else if(type == Type.REBATE) return Treasury.getAdjustedPrice(price, discount) - cut;
         else return 0;
     }
 }

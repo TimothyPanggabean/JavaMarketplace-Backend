@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  * Timothy Christian Panggabean
  * 1906355705
  */
-public class Store extends Recognizable
+public class Store
 {
     public String name;
     public String address;
