@@ -21,6 +21,9 @@ public class JsonTable<T> extends Vector
 		Class<T[]> arrayType = (Class<T[]>) Array.newInstance(clazz, 0).getClass();
 		T[] loaded = readJson(arrayType, filepath);
 		for(T element: loaded) this.add(element);
+		
+		String filewrite = "Foobar";
+		writeJson(loaded, filewrite);
 	}
 	
 	public static<T> T readJson(Class<T> clazz, String filepath) throws FileNotFoundException
