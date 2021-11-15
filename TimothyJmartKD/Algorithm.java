@@ -9,7 +9,7 @@ public class Algorithm
 	private Algorithm()
 	{
 	}
-	
+
 	public static<T> List<T> collect(T[] array, T value)
 	{
 		Predicate<T> pred = val -> val.equals(value);
@@ -596,4 +596,75 @@ public class Algorithm
         }
         return minimum;
     }
+    
+  //--------------------------------------------------------------------------------------
+    
+    public static<T> List<T> paginate(T[] array, int page, int pageSize, Predicate<T> pred)
+    {
+		List<T> newPage = new ArrayList<>();
+		
+		if((pageSize < 0 || pageSize >= array.length) || (page < 0 || page >= array.length/pageSize)) 
+		{
+			throw new IllegalArgumentException();
+		}
+		
+		for(T element: array) 
+		{
+			if(pred.predicate(element))
+				newPage.add(element);
+		}
+		
+		int startIndex = page * pageSize;
+		if(newPage == null || newPage.size() <= startIndex) return Collections.emptyList();
+		
+		return newPage.subList(startIndex, Math.min(startIndex + pageSize, newPage.size()));
+	}
+	
+	public static<T> List<T> paginate(Iterable<T> iterable, int page, int pageSize, Predicate<T> pred)
+	{
+		List<T> newPage = new ArrayList<>();
+		Iterator<T> iterator = iterable.iterator();
+		
+		int iterSize = ((Collection<?>) iterable).size();
+		
+		if((pageSize < 0 || pageSize >= iterSize) || (page < 0 || page >= iterSize/pageSize)) 
+		{
+			throw new IllegalArgumentException();
+		}
+		
+		while(iterator.hasNext()) 
+		{
+			T element = iterator.next();
+			if(pred.predicate(element)) newPage.add(element);
+		}
+		
+		int startIndex = page * pageSize;
+		if(newPage == null || newPage.size() <= startIndex) return Collections.emptyList();
+		
+		return newPage.subList(startIndex, Math.min(startIndex + pageSize, newPage.size()));
+	}
+	
+	public static<T> List<T> paginate(Iterator<T> iterator, int page, int pageSize, Predicate<T> pred)
+	{
+		List<T> newPage = new ArrayList<>();
+		
+		int iteratorSize = ((Collection<?>) iterator).size();
+		
+		if((pageSize < 0 || pageSize >= iteratorSize) || (page < 0 || page >= iteratorSize/pageSize)) 
+		{
+			throw new IllegalArgumentException();
+		}
+		
+		while(iterator.hasNext()) 
+		{
+			T element = iterator.next();
+			if(pred.predicate(element))
+				newPage.add(element);
+		}
+		
+		int startIndex = page * pageSize;
+		if(newPage == null || newPage.size() <= startIndex) return Collections.emptyList();
+		
+		return newPage.subList(startIndex, Math.min(startIndex + pageSize, newPage.size()));
+	}
 }

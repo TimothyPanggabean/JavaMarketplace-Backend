@@ -33,3 +33,6 @@
 /Serializable.class
 /Jmart$Product.class
 /JsonTable.class
+/Payment$Record.class
+/PhoneTopUp.class
+/ObjectPoolThread.class

@@ -14,20 +14,17 @@ import com.google.gson.stream.JsonReader;
  */
 public class Jmart
 {
+	public static long DELIVERED_LIMIT_MS = 200;
+	public static long ON_DELIVERY_LIMIT_MS = 300;
+	public static long ON_PROGRESS_LIMIT_MS = 300;
+	public static long WAITING_CONF_LIMIT_MS = 200;
+	
 	public static void main(String[] args)
 	{
+		
 		try
 		{
-			List<Product> list	= read("/Users/Timothy/Desktop/Kuliah/Semester 5/OOP/Praktikum/Modul 6/randomProductList.json");
-			
-			//List<Product> filteredPrice = filterByPrice(list, 0.0, 20000.0);
-			//filteredPrice.forEach(product -> System.out.println(product.price));
-			
-			//List<Product> filteredAccountId = filterByAccountId(list, 1, 0, 5);
-			//filteredAccountId.forEach(product -> System.out.println(product.name));
-			
-			List<Product> filteredName = filterByName(list, "gtx", 1, 5);
-			filteredName.forEach(product -> System.out.println(product.name));
+	
 		}
 		catch (Throwable t)
 		{
@@ -35,6 +32,32 @@ public class Jmart
 		}
 	}
 	
+	public static boolean paymentTimekeeper(Payment payment)
+	{
+		long elapsedTime = (new java.util.Date()).getTime() - payment.history.get(payment.history.size()-1).date.getTime();
+		
+		if(payment.history.get(payment.history.size() - 1).status.equals(Invoice.Status.WAITING_CONFIRMATION) && elapsedTime > WAITING_CONF_LIMIT_MS)
+			payment.history.add(new Payment.Record(Invoice.Status.FAILED, "Transaction Failed"));
+		
+		else if(payment.history.get(payment.history.size() - 1).status.equals(Invoice.Status.ON_PROGRESS) && elapsedTime > ON_PROGRESS_LIMIT_MS)
+			payment.history.add(new Payment.Record(Invoice.Status.FAILED, "Transaction Failed"));
+		
+		else if(payment.history.get(payment.history.size() - 1).status.equals(Invoice.Status.ON_DELIVERY) && elapsedTime > ON_DELIVERY_LIMIT_MS)
+			payment.history.add(new Payment.Record(Invoice.Status.DELIVERED, "Package has been delivered"));
+		
+		else if(payment.history.get(payment.history.size() - 1).status.equals(Invoice.Status.DELIVERED) && elapsedTime > DELIVERED_LIMIT_MS)
+			payment.history.add(new Payment.Record(Invoice.Status.FINISHED, "Payment has been finished"));
+		
+		for(Payment.Record element: payment.history) {
+            if(element.status == Invoice.Status.FINISHED || element.status == Invoice.Status.FAILED) payment.history.remove(element);
+        }
+        
+        if(payment.history.isEmpty()) return true;
+        
+        else return false;
+	}
+	
+	/*
 	public static List<Product> filterByAccountId(List<Product> list, int accountId, int page, int pageSize)
 	{
 		List<Product> listFilterByAccountId = new ArrayList<>();
@@ -115,4 +138,5 @@ public class Jmart
         Collections.addAll(list, entry);
         return list;
     }
+    */
 }

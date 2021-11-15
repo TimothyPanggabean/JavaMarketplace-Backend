@@ -37,4 +37,9 @@ public class Account extends Serializable
         
         return matchEmail.find() && matchPassword.find();
     }
+    
+    public String toString() 
+    {
+    	return "name: "+ name + "\nemail: " + email + "\npassword: " + password;
+    }
 }
