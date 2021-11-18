@@ -1,0 +1,15 @@
+package com.TimothyJmartKD;
+
+
+/**
+ * Enum ProductCategory
+ *
+ * Timothy Christian Panggabean
+ * 1906355705
+ */
+public enum ProductCategory
+{
+    BOOK, KITCHEN, ELETCTRONIC, FASHION, GAMING, GADGET, MOTHERCARE, COSMETICS,
+    HEALTHCARE, FURNITURE, JEWELERY, TOYS, FNB, STATIONERY, SPORTS, AUTMOTIVE,
+    PETCARE,ART_CRAFT,CARPENTRY,MISCELLANEOUS, PROPERTY, TRAVEL, WEDDING;
+}
