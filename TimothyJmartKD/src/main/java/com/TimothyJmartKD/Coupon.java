@@ -1,6 +1,8 @@
 package com.TimothyJmartKD;
 
 
+import com.TimothyJmartKD.dbjson.Serializable;
+
 /**
  * Class Coupon
  *

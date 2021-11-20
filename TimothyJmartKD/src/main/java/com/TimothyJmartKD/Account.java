@@ -1,5 +1,7 @@
 package com.TimothyJmartKD;
 
+import com.TimothyJmartKD.dbjson.Serializable;
+
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 

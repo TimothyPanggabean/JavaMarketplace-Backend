@@ -1,6 +1,7 @@
 package com.TimothyJmartKD;
+import com.TimothyJmartKD.dbjson.Serializable;
+
 import java.util.Date;
-import java.util.ArrayList;
 
 /**
  * Class Invoice

@@ -29,7 +29,7 @@ public class Jmart
 
 		try
 		{
-	
+
 		}
 		catch (Throwable t)
 		{
@@ -37,7 +37,7 @@ public class Jmart
 		}
 	}
 	
-	public static boolean paymentTimekeeper(Payment payment)
+	/*public static boolean paymentTimekeeper(Payment payment)
 	{
 		long elapsedTime = (new java.util.Date()).getTime() - payment.history.get(payment.history.size()-1).date.getTime();
 		
@@ -60,7 +60,7 @@ public class Jmart
         if(payment.history.isEmpty()) return true;
         
         else return false;
-	}
+	}*/
 	
 	/*
 	public static List<Product> filterByAccountId(List<Product> list, int accountId, int page, int pageSize)
