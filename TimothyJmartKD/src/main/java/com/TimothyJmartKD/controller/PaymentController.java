@@ -22,10 +22,7 @@ public class PaymentController {
     public static ObjectPoolThread<Payment> poolThread;
 
     @PostMapping("/{id}/accept")
-    boolean accept(int id)
-    {
-        return false;
-    }
+    boolean accept(int id) { return false; }
 
     @PostMapping("/{id}/cancel")
     boolean cancel(int id)

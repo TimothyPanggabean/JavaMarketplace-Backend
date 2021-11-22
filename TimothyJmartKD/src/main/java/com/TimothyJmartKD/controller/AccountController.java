@@ -1,5 +1,6 @@
 package com.TimothyJmartKD.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.TimothyJmartKD.Account;
 import com.TimothyJmartKD.Algorithm;
 import com.TimothyJmartKD.Store;
@@ -7,6 +8,8 @@ import com.TimothyJmartKD.dbjson.JsonAutowired;
 import com.TimothyJmartKD.dbjson.JsonTable;
 import org.springframework.web.bind.annotation.*;
 import java.util.regex.Pattern;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 @RestController
 @RequestMapping("/account")
@@ -28,9 +31,30 @@ public class AccountController implements BasicGetController<Account>
     @PostMapping("/login")
     Account login(String email, String password)
     {
+        String passwordToHash = password;
+        String generatedPassword = null;
+
+        try
+        {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(passwordToHash.getBytes());
+            byte[] bytes = md.digest();
+
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i < bytes.length; i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        }
+        catch(NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+
         for(Account account : accountTable)
         {
-            if (account.email.equals(email) && account.password.equals(password))
+            if (account.email.equals(email) && account.password.equals(generatedPassword))
                 return account;
         }
         return null;
@@ -44,9 +68,30 @@ public class AccountController implements BasicGetController<Account>
                     @RequestParam String password
             )
     {
+        String passwordToHash = password;
+        String generatedPassword = null;
+
+        try
+        {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(passwordToHash.getBytes());
+            byte[] bytes = md.digest();
+
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i < bytes.length; i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        }
+        catch(NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+
         if(!name.isBlank() && REGEX_PATTERN_EMAIL.matcher(email).find() &&
                 REGEX_PATTERN_PASSWORD.matcher(password).find() && !Algorithm.exists(accountTable.toArray(), email))
-        return new Account(name, email, password, 0);
+        return new Account(name, email, generatedPassword, 0);
 
         else return null;
     }
