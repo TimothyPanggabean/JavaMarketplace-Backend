@@ -3,31 +3,24 @@ package com.TimothyJmartKD.controller;
 import com.TimothyJmartKD.Algorithm;
 import com.TimothyJmartKD.Coupon;
 import com.TimothyJmartKD.Predicate;
-import com.TimothyJmartKD.Treasury;
 import com.TimothyJmartKD.dbjson.JsonAutowired;
 import com.TimothyJmartKD.dbjson.JsonTable;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/coupon")
-public class CoupunController implements BasicGetController<Coupon>
+public class CouponController implements BasicGetController<Coupon>
 {
     @JsonAutowired(filepath = "C:/Users/Timothy/Desktop/Kuliah/Semester 5/OOP/Praktikum/Modul 8", value = Coupon.class)
     public static JsonTable<Coupon> couponTable;
 
     @GetMapping("/{id}/canApply")
-    boolean canApply(int id, double price, double discount)
+    boolean canApply(@PathVariable int id, @RequestParam double price, @RequestParam double discount)
     {
-        for(Coupon coupon : couponTable)
-        {
-            if(coupon.id == id)
-            {
-                return coupon.canApply(price, discount);
-            }
-        }
-        return false;
+        Predicate<Coupon> couponPredicate = applicable -> applicable.id == id;
+        return Objects.requireNonNull(Algorithm.find(getJsonTable(), couponPredicate)).canApply(price, discount);
     }
 
     @GetMapping("/getAvailable")
@@ -43,7 +36,7 @@ public class CoupunController implements BasicGetController<Coupon>
     }
 
     @GetMapping("/{id}/isUsed")
-    boolean isUsed(int id)
+    boolean isUsed(@PathVariable int id)
     {
         for(Coupon coupon : couponTable)
         {

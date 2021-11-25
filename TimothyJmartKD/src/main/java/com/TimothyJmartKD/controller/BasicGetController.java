@@ -5,6 +5,7 @@ import com.TimothyJmartKD.dbjson.JsonTable;
 import com.TimothyJmartKD.dbjson.Serializable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,7 +20,8 @@ public interface BasicGetController <T extends Serializable> {
     public abstract JsonTable<T> getJsonTable();
 
     @GetMapping("/page")
-    default List<T> getPage (@PathVariable int page, @PathVariable int pageSize){
+    default List<T> getPage (@RequestParam int page, @RequestParam int pageSize)
+    {
         return Algorithm.<T>paginate(getJsonTable(), page, pageSize, e->true);
     }
 }

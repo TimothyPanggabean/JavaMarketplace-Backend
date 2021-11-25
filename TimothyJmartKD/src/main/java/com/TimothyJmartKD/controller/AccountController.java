@@ -29,7 +29,7 @@ public class AccountController implements BasicGetController<Account>
     }
 
     @PostMapping("/login")
-    Account login(String email, String password)
+    Account login(@RequestParam String email, @RequestParam String password)
     {
         String passwordToHash = password;
         String generatedPassword = null;
@@ -61,12 +61,7 @@ public class AccountController implements BasicGetController<Account>
     }
 
     @PostMapping("/register")
-    Account register
-            (
-                    @RequestParam String name,
-                    @RequestParam String email,
-                    @RequestParam String password
-            )
+    Account register(@RequestParam String name, @RequestParam String email,@RequestParam String password)
     {
         String passwordToHash = password;
         String generatedPassword = null;
@@ -97,7 +92,7 @@ public class AccountController implements BasicGetController<Account>
     }
 
     @PostMapping("/{id}/registerStore")
-    Store registerStore(int id, String name, String address, String phoneNumber)
+    Store registerStore(@PathVariable int id, @RequestParam String name, @RequestParam String address, @RequestParam String phoneNumber)
     {
         if(Algorithm.exists(getJsonTable().toArray(), id) || !Algorithm.exists(getJsonTable().toArray(), name))
             return new Store(name, address, phoneNumber, 0);
@@ -107,7 +102,7 @@ public class AccountController implements BasicGetController<Account>
     }
 
     @PostMapping("/{id}/topUp")
-    boolean topUp(int id, double balance)
+    boolean topUp(@PathVariable int id, @RequestParam double balance)
     {
         for(Account account : accountTable)
         {

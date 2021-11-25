@@ -4,7 +4,6 @@ import com.TimothyJmartKD.*;
 import com.TimothyJmartKD.dbjson.JsonAutowired;
 import com.TimothyJmartKD.dbjson.JsonTable;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -15,16 +14,9 @@ public class ProductController implements BasicGetController
     public static JsonTable<Product> productTable;
 
     @PostMapping("/create")
-    Product create(
-            @PathVariable int accountId,
-            @PathVariable String name,
-            @PathVariable int weight,
-            @PathVariable double price,
-            @PathVariable double discount,
-            @PathVariable boolean conditionUsed,
-            @PathVariable ProductCategory category,
-            @PathVariable byte shipmentPlans
-        )
+    Product create(@RequestParam int accountId, @RequestParam String name, @RequestParam int weight,
+                   @RequestParam double price, @RequestParam double discount, @RequestParam boolean conditionUsed,
+                   @RequestParam ProductCategory category, @RequestParam byte shipmentPlans)
     {
         Predicate<Account> predId = account -> account.id == accountId;
         Predicate<Account> predStore = account -> account.store != null;
@@ -46,7 +38,7 @@ public class ProductController implements BasicGetController
     }
 
     @GetMapping("/{id}/store")
-    List<Product> getProductByStore(@PathVariable int id, int page, int pageSize)
+    List<Product> getProductByStore(@PathVariable int id, @RequestParam int page, @RequestParam int pageSize)
     {
 
             Predicate<Product> pred = product -> product.accountId == id;
@@ -54,9 +46,22 @@ public class ProductController implements BasicGetController
     }
 
     @GetMapping("/getFiltered")
-    List<Product> getProductFiltered(int page, int pageSize, int accountId, String search,
-                                     int minPrice, int maxPrice, ProductCategory category)
+    List<Product> getProductFiltered(@RequestParam int page, @RequestParam int pageSize,
+                                     @RequestParam int accountId, @RequestParam String search,
+                                     @RequestParam int minPrice, @RequestParam int maxPrice,
+                                     @RequestParam ProductCategory category)
     {
-        return null;
+        Predicate<Product> accountIdFilter = accFilter -> accFilter.accountId == accountId;
+        Predicate<Product> searchContain = contained -> contained.name.toLowerCase().contains(search.toLowerCase());
+        Predicate<Product> minPriceFilter = minFiltered -> minFiltered.price >= minPrice;
+        Predicate<Product> maxPriceFilter = maxFiltered -> maxFiltered.price <= maxPrice;
+        Predicate<Product> categoryFilter = catFiltered -> catFiltered.category == category;
+        Predicate<Product> filter = filtered -> Algorithm.exists(getJsonTable(), accountIdFilter) &&
+                Algorithm.exists(getJsonTable(), searchContain) &&
+                Algorithm.exists(getJsonTable(), minPriceFilter) &&
+                Algorithm.exists(getJsonTable(), maxPriceFilter) &&
+                Algorithm.exists(getJsonTable(), categoryFilter);
+
+        return Algorithm.paginate(getJsonTable(), page, pageSize, filter);
     }
 }

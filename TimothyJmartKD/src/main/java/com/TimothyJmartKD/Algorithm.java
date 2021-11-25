@@ -601,69 +601,81 @@ public class Algorithm
     
     public static<T> List<T> paginate(T[] array, int page, int pageSize, Predicate<T> pred)
     {
-		List<T> newPage = new ArrayList<>();
+		List<T> newPage = new ArrayList<T>();
 		
-		if((pageSize < 0 || pageSize >= array.length) || (page < 0 || page >= array.length/pageSize)) 
+		if((pageSize < 0 || pageSize <= 0))
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid Page Size");
 		}
-		
+
+        int startIndex = page * pageSize;
+
+        if(array == null || array.length <= startIndex)
+        {
+            return Collections.emptyList();
+        }
+
 		for(T element: array) 
 		{
 			if(pred.predicate(element))
 				newPage.add(element);
 		}
-		
-		int startIndex = page * pageSize;
-		if(newPage == null || newPage.size() <= startIndex) return Collections.emptyList();
-		
+
 		return newPage.subList(startIndex, Math.min(startIndex + pageSize, newPage.size()));
 	}
 	
 	public static<T> List<T> paginate(Iterable<T> iterable, int page, int pageSize, Predicate<T> pred)
 	{
-		List<T> newPage = new ArrayList<>();
+		List<T> newPage = new ArrayList<T>();
 		Iterator<T> iterator = iterable.iterator();
-		
-		int iterSize = ((Collection<?>) iterable).size();
-		
-		if((pageSize < 0 || pageSize >= iterSize) || (page < 0 || page >= iterSize/pageSize)) 
-		{
-			throw new IllegalArgumentException();
-		}
-		
-		while(iterator.hasNext()) 
-		{
-			T element = iterator.next();
-			if(pred.predicate(element)) newPage.add(element);
-		}
-		
-		int startIndex = page * pageSize;
-		if(newPage == null || newPage.size() <= startIndex) return Collections.emptyList();
-		
+
+        if(page < 0 || pageSize <= 0)
+        {
+            throw new IllegalArgumentException("Invalid Page Size");
+        }
+
+        int startIndex = page * pageSize;
+        int size = ((Collection<?>) iterator).size();
+
+        if(iterator == null || size <= startIndex)
+        {
+            return Collections.emptyList();
+        }
+        while(iterator.hasNext())
+        {
+            if(pred.predicate(iterator.next()))
+            {
+                newPage.add(iterator.next());
+            }
+        }
 		return newPage.subList(startIndex, Math.min(startIndex + pageSize, newPage.size()));
 	}
 	
 	public static<T> List<T> paginate(Iterator<T> iterator, int page, int pageSize, Predicate<T> pred)
 	{
-		List<T> newPage = new ArrayList<>();
+		List<T> newPage = new ArrayList<T>();
 		
-		int iteratorSize = ((Collection<?>) iterator).size();
-		
-		if((pageSize < 0 || pageSize >= iteratorSize) || (page < 0 || page >= iteratorSize/pageSize)) 
+		if(pageSize < 0 || pageSize <= 0)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid Page Size");
 		}
-		
+
+        int startIndex = page * pageSize;
+
+        int size = ((Collection<?>) iterator).size();
+
+        if(iterator == null || size <= startIndex)
+        {
+            return Collections.emptyList();
+        }
+
 		while(iterator.hasNext()) 
 		{
-			T element = iterator.next();
-			if(pred.predicate(element))
-				newPage.add(element);
+			if(pred.predicate(iterator.next()))
+            {
+                newPage.add(iterator.next());
+            }
 		}
-		
-		int startIndex = page * pageSize;
-		if(newPage == null || newPage.size() <= startIndex) return Collections.emptyList();
 		
 		return newPage.subList(startIndex, Math.min(startIndex + pageSize, newPage.size()));
 	}
