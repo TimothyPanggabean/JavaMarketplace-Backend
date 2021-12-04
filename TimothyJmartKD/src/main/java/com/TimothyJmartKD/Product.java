@@ -35,13 +35,13 @@ public class Product extends Serializable
     public String toString()
     {
         return
-        "Name: "+ name +
-        "\nWeight: "+ weight +
-        "\nconditionUsed: "+ conditionUsed +
-        "\nprice: "+ price +
-        "\ndiscount: "+ discount +
-        "\ncategory: "+ category +
-        "\nshipmentPlans"+ shipmentPlans;
+                "Name: "+ name +
+                "\nWeight: "+ weight +
+                "\nconditionUsed: "+ conditionUsed +
+                "\nprice: "+ price +
+                "\ndiscount: "+ discount +
+                "\ncategory: "+ category +
+                "\nshipmentPlans: "+ shipmentPlans;
     }
     
 }

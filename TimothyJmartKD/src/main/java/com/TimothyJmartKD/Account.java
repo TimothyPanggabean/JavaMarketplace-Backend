@@ -20,7 +20,6 @@ public class Account extends Serializable
     public String name;
     public String password;
     public Store store;
-    
 
     public Account(String name, String email, String password, double balance)
     {
@@ -28,6 +27,7 @@ public class Account extends Serializable
         this.email = email;
         this.password = password;
         this.balance = balance;
+        this.store = null;
     }
     
     public boolean validate()
@@ -43,6 +43,6 @@ public class Account extends Serializable
     
     public String toString() 
     {
-    	return "name: "+ name + "\nemail: " + email + "\npassword: " + password;
+    	return "name: "+ name + "\nemail: " + email + "\npassword: " + password + "\nstore: " + store;
     }
 }

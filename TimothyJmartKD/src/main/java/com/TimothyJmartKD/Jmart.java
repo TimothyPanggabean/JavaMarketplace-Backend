@@ -3,6 +3,8 @@ package com.TimothyJmartKD;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
+
+import com.TimothyJmartKD.dbjson.JsonDBEngine;
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import org.springframework.boot.SpringApplication;
@@ -25,16 +27,9 @@ public class Jmart
 	
 	public static void main(String[] args)
 	{
-		SpringApplication.run(Jmart.class, args);
-
-		try
-		{
-
-		}
-		catch (Throwable t)
-		{
-			t.printStackTrace();
-		}
+		JsonDBEngine.Run(Jmart.class);
+		SpringApplication.run(Jmart.class,args);
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
 	}
 	
 	/*public static boolean paymentTimekeeper(Payment payment)

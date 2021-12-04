@@ -13,7 +13,7 @@ import java.util.Objects;
 @RequestMapping("/coupon")
 public class CouponController implements BasicGetController<Coupon>
 {
-    @JsonAutowired(filepath = "C:/Users/Timothy/Desktop/Kuliah/Semester 5/OOP/Praktikum/Modul 8", value = Coupon.class)
+    @JsonAutowired(filepath = "C:/Users/Timothy/Desktop/Kuliah/Semester_5/OOP/Praktikum/Modul 9/couponTable.json", value = Coupon.class)
     public static JsonTable<Coupon> couponTable;
 
     @GetMapping("/{id}/canApply")

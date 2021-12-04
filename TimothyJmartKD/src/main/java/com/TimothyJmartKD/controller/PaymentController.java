@@ -15,7 +15,7 @@ public class PaymentController {
     public static long ON_PROGRESS_LIMIT_MS = 300;
     public static long WAITING_CONF_LIMIT_MS = 200;
 
-    @JsonAutowired(filepath = "C:/Users/Timothy/Desktop/Kuliah/Semester 5/OOP/Praktikum/Modul 8", value = Payment.class)
+    @JsonAutowired(filepath = "C:/Users/Timothy/Desktop/Kuliah/Semester_5/OOP/Praktikum/Modul 9/paymentTable.json", value = Payment.class)
     public static JsonTable<Payment> paymentTable;
 
     public static ObjectPoolThread<Payment> poolThread;
