@@ -3,7 +3,6 @@
  * yaitu: page, id
  */
 package com.TimothyJmartKD.controller;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +36,5 @@ public interface BasicGetController<T extends Serializable> {
         return Algorithm.find(getJsonTable().iterator(), pred);
     }
 
-    public abstract JsonTable<T> getJsonTable(); //Abstract class untuk mengambil tabel yang terkait
+    public abstract JsonTable<T> getJsonTable(); /**Abstract class untuk mengambil tabel yang terkait*/
 }

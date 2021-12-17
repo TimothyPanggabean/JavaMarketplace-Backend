@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public abstract class Invoice extends Serializable
 {
-    public final Date date = new Date();
+    public final Date date;
     public int buyerId;
     public int productId;
     public int complaintId = -1;
@@ -21,6 +21,9 @@ public abstract class Invoice extends Serializable
     {
         this.buyerId = buyerId;
         this.productId = productId;
+        date = new Date();
+        rating = Rating.NONE;
+        complaintId = -1;
     }
     
     public abstract double getTotalPay(Product product);

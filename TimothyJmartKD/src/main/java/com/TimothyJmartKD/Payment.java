@@ -13,7 +13,7 @@ public class Payment extends Invoice
     public Shipment shipment;
     public int productCount;
     
-    public ArrayList<Record> history;
+    public ArrayList<Record> history = new ArrayList<>();
     
     public Payment(int buyerId, int productId, int productCount, Shipment shipment)
     {
@@ -24,7 +24,7 @@ public class Payment extends Invoice
     
     public double getTotalPay(Product product)
     {
-    	return product.price - (product.price * product.discount);
+    	return product.price - (product.price * product.discount/100);
     }
     
     public static class Record
@@ -36,6 +36,8 @@ public class Payment extends Invoice
     	public Record(Status status, String message)
     	{
     		date = new Date();
+            this.status = status;
+            this.message = message;
     	}
     }
 }

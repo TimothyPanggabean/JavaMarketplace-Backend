@@ -3,7 +3,6 @@ package com.TimothyJmartKD;
 
 /**
  * Enum ProductCategory
- *
  * Timothy Christian Panggabean
  * 1906355705
  */

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import static com.TimothyJmartKD.controller.AccountController.accountTable;
 
@@ -39,7 +38,7 @@ public class ProductController implements BasicGetController<Product> {
 
     @GetMapping("/{id}/store")
     List<Product> getProductByStore(@PathVariable int id, @RequestParam int page, @RequestParam int pageSize) {
-        Predicate<Product> predicates = prod -> prod.accountId == id;
+        Predicate<Product> predicates = prod -> true;
         List<Product> list = new ArrayList<>();
 
         for(Product product : getJsonTable()) {
