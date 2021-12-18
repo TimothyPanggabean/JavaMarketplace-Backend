@@ -3,9 +3,8 @@ package com.TimothyJmartKD;
 
 /**
  * Class ProductRating
- *
- * Timothy Christian Panggabean
- * 1906355705
+ * isi: metode untuk rate sebuah toko
+ * tidak diimplementasi di program akhir
  */
 public class ProductRating
 {

@@ -3,6 +3,11 @@ package com.TimothyJmartKD;
 import java.util.Vector;
 import java.util.function.Function;
 
+/**
+ * Class ObjectPoolThread
+ * isi: metode untuk membuat dan memulai sebuah thread
+ *
+ */
 public class ObjectPoolThread<T> extends Thread
 {
 	private boolean exitSignal;

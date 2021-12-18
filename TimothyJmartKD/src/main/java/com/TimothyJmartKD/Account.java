@@ -7,14 +7,17 @@ import java.util.regex.Matcher;
 
 /**
  * Class Account
+ * isi: constructor untuk inisiasi, toString untuk menampilkan data (yang digunakan yang punya front end),
+ * dan validasi regex
  *
- * Timothy Christian Panggabean
- * 1906355705
  */
 public class Account extends Serializable
 {
+    /**Regex untuk email dan password*/
 	public static final String REGEX_EMAIL="^\\w+([\\.]?[&\\*~\\w+])*@\\w+([\\.-]?)*(\\.\\w{2,3})+$";
     public static final String REGEX_PASSWORD="^(?=.*[0-9])(?=.*[a-z])(?=\\S+$)(?=.*[A-Z]).{8,}$";
+
+    /**Komponen yang dimiliki sebuah akun*/
     public double balance;
     public String email;
     public String name;

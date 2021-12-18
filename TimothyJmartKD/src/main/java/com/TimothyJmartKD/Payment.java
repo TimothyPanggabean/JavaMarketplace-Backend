@@ -4,9 +4,8 @@ import java.util.*;
 
 /**
  * Class Payment
+ * isi: constructor untuk inisiasi, mengambil harga total dari sebuah transaksi, dan mengisi record
  *
- * Timothy Christian Panggabean
- * 1906355705
  */
 public class Payment extends Invoice
 {
@@ -21,7 +20,11 @@ public class Payment extends Invoice
         this.productCount = productCount;
         this.shipment = shipment;   
     }
-    
+
+    /**
+     * Mengambil harga total yang akan dibayar
+     * @param product produk dalam transaksi
+     */
     public double getTotalPay(Product product)
     {
     	return product.price - (product.price * product.discount/100);

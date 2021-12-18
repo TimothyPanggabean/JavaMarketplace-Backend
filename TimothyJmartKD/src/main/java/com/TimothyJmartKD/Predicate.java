@@ -1,6 +1,10 @@
 package com.TimothyJmartKD;
 
-public interface Predicate<T> 
+/**
+ * Interface Predicate
+ * isi: boolean untuk digunakan di class lain
+ */
+public interface Predicate<T>
 {
 	public abstract boolean predicate(T arg);
 }

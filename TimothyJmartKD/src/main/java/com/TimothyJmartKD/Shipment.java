@@ -5,18 +5,21 @@ import java.util.Calendar;
 
 /**
  * Class Shipment
+ * isi: constructor untuk inisiasi, dan waktu pengiriman (tidak diimplementasi pada program akhir
  *
- * Timothy Christian Panggabean
- * 1906355705
  */
 public class Shipment 
 {
+    /**Menentukan format tanggal untuk time stamp*/
     public static final SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("EEE MMMM dd yyyy");
+
+    /**Jenis - jenis pengiriman yang tersedia*/
     public static final Plan INSTANT = new Plan((byte)(1 << 0));
     public static final Plan SAME_DAY = new Plan((byte)(1 << 1));
     public static final Plan NEXT_DAY = new Plan((byte)(1 << 2));
     public static final Plan REGULER = new Plan((byte)(1 << 3));
     public static final Plan KARGO = new Plan((byte)(1 << 4));
+
     public String address;
     public int cost;
     public byte plan;
@@ -45,7 +48,6 @@ public class Shipment
         else
             return false;
     }
-    
     
     public String getEstimatedArrival(Date reference)
     {

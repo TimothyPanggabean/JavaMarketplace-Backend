@@ -1,6 +1,10 @@
 package com.TimothyJmartKD;
 
-public class Pair<T,U> 
+/**
+ * Class Pair
+ * tidak diimplementasi dalam program akhir
+ */
+public class Pair<T,U>
 {
 	public T first;
 	public U second;

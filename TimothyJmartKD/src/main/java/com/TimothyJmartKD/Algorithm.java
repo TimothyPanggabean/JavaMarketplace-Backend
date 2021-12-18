@@ -3,6 +3,11 @@ package com.TimothyJmartKD;
 import java.lang.Iterable;
 import java.util.*;
 
+/**
+ * Class Algorithm
+ * isi: alogritma yang dapat digunakan dalam program
+ * yaitu collect, count, exists, find, max, min, paginate
+ */
 public class Algorithm
 {
 

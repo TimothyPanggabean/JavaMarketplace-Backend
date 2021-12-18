@@ -2,6 +2,10 @@ package com.TimothyJmartKD.dbjson;
 
 import java.util.HashMap;
 
+/**
+ * CLass Serializable
+ * isi: mengatur id ketika ada item baru
+ */
 public class Serializable implements Comparable<Serializable>
 {
     private static HashMap<Class<?>, Integer> mapCounter = new HashMap<>();

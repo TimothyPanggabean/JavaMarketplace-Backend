@@ -6,9 +6,8 @@ import java.text.SimpleDateFormat;
 
 /**
  * Class Complaint
- *
- * Timothy Christian Panggabean
- * 1906355705
+ * isi: constructor untuk inisiasi dan toString untuk menampilkan data (yang digunakan punya front end)
+ * tidak diimplementasi di program akhir
  */
 public class Complaint extends Serializable
 {

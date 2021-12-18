@@ -3,8 +3,7 @@ package com.TimothyJmartKD;
 
 /**
  * Enum ProductCategory
- * Timothy Christian Panggabean
- * 1906355705
+ * isi: kategori yang dapat dimiliki sebuah produk
  */
 public enum ProductCategory
 {

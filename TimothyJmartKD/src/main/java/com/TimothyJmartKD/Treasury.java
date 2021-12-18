@@ -2,10 +2,8 @@ package com.TimothyJmartKD;
 
 
 /**
- * Class PriceTag
- *
- * Timothy Christian Panggabean
- * 1906355705
+ * Class Treasury
+ * isi: mengolah biaya setelah diskon dan biaya admin
  */
 public class Treasury
 {

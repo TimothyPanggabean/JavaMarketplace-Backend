@@ -5,9 +5,8 @@ import com.TimothyJmartKD.dbjson.Serializable;
 
 /**
  * Class Coupon
- *
- * Timothy Christian Panggabean
- * 1906355705
+ * isi: constructor untuk inisiasi dan sistem apply
+ * tidak diimplementasi di program akhir
  */
 public class Coupon extends Serializable
 {

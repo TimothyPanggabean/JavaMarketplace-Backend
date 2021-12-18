@@ -4,18 +4,20 @@ import java.util.regex.Pattern;
 
 /**
  * Class Store
+ * isi: constructor untuk inisiasi, validasi regex untuk pembuatan toko, dan toString untuk
+ * menampilkan data (yang digunakan yang di front end)
  *
- * Timothy Christian Panggabean
- * 1906355705
  */
 public class Store
 {
+    /**Regex untuk nama toko dan nomor telepon toko*/
+    public static final String REGEX_PHONE =" ^[0-9]{9,12}\b";
+    public static final String REGEX_NAME = "^[A-Z][a-z\\sa-z]{4,19}\b";
+
+    public double balance;
     public String name;
     public String address;
     public String phoneNumber;
-    public static final String REGEX_PHONE =" ^[0-9]{9,12}\b";
-    public static final String REGEX_NAME = "^[A-Z][a-z\\sa-z]{4,19}\b";
-    public double balance;
        
     public Store(String name, String address, String phoneNumber,double balance)
     {

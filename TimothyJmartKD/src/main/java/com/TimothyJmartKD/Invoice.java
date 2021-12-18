@@ -5,9 +5,8 @@ import java.util.Date;
 
 /**
  * Class Invoice
+ * isi: constructor untuk inisiasi, enum, dan mengambil produk akhir
  *
- * Timothy Christian Panggabean
- * 1906355705
  */
 public abstract class Invoice extends Serializable
 {

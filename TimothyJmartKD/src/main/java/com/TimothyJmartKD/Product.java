@@ -5,9 +5,7 @@ import com.TimothyJmartKD.dbjson.Serializable;
 
 /**
  * Class Product
- *
- * Timothy Christian Panggabean
- * 1906355705
+ * isi: constructor untuk inisiasi dan toString untuk menampilkan data (yang digunakan yang punya front end)
  */
 public class Product extends Serializable
 {
